@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title><ion-icon name="locate"></ion-icon> BUSCAR CEP</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="card center">
+    <ion-card>
+    <ion-card-header>
+      <h2 class="titulo">Consulta de Códigos de Endereçamento</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- property binding que associa esse form com formCep:FormGroup -->
+      <form [formGroup]="formCep">
+
+      <ion-list >
+        <ion-item>
+          <!-- input que é utilizado para a consulta de CEP -->
+          <ion-input  #inputCep formControlName="cep" type="number"  placeholder="CEP Ex: 01001001" clearInput  class="form-control"></ion-input>
+        </ion-item>
+    </ion-list>
+      <!-- botão que verifica se o formulario é valido e com a ação do click chama função getEndereco assim mostrando os dados e salvando no banco de dados -->
+      <button ion-button full type="submit" [disabled]="!formCep.valid" (click)="getEndereco(inputCep.value)">BUSCAR</button>
+  </form>
+    </ion-card-content>
+  </ion-card>
+  </div>
+</ion-content>

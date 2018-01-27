@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title><ion-icon name="locate"></ion-icon> HISTÓRICO CEP</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <!-- loop que popula o array historico e apresenta os dados com a diretiva ngFor -->
+  <ion-card *ngFor="let item of historico;">
+    <ion-card-header>
+      <h2 class="titulo">{{item.cep}}</h2>
+      <p class="subTitulo">{{item.data}}</p>
+    </ion-card-header>
+    <ion-card-content>
+        <p>Logradouro: {{item.logradouro}}</p>
+        <ion-row>
+          <ion-col col-10>
+            <p>Bairro: {{item.bairro}}</p>
+            <p>Localidade: {{item.localidade}}-{{item.uf}}</p>
+          </ion-col>
+          <ion-col col-2>
+            <button ion-button full color="danger" (click)="excluiRegistro(item)"><ion-icon name="trash"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
