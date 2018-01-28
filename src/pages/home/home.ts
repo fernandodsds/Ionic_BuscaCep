@@ -43,8 +43,19 @@ export class HomePage
         data =>
         {
           this.cep = data;
-          this.cepAlert(this.cep);
-          this.historicoDb.salvarPesquisa(this.cep.cep, dataHora, this.cep.logradouro, this.cep.bairro, this.cep.localidade, this.cep.uf);
+          //verifica se o cep realmente existe caso for undefined o usuario será notificado
+          if (this.cep.erro) {
+            let alert = this.alert.create({
+              title: "CEP inexistente ou invalido",
+              message: "O CEP buscado não pode ser encontrado verifique se digitado corretamente.",
+              buttons: ['FECHAR'],
+            });
+            alert.present();
+          }else{
+            this.cepAlert(this.cep);
+            this.historicoDb.salvarPesquisa(this.cep.cep, dataHora, this.cep.logradouro, this.cep.bairro, this.cep.localidade, this.cep.uf);
+          }
+
         }
       )
   }
