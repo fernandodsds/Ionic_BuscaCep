@@ -38,7 +38,7 @@ export class HomePage
   //função que exibe dados do CEP e salva no banco de dados
   getEndereco(cep){
     let now: Date  = new Date();
-    let dataHora: String = "pesquisado em "+((now.getDate()<10)?'0'+(now.getDate()+1): (now.getDate()+1))+"/"+((now.getMonth()<10)?'0'+(now.getMonth()+1): (now.getMonth()+1))+"/"+now.getFullYear()+" ás "+now.getHours()+":"+now.getMinutes() ;
+    let dataHora: String = "pesquisado em "+((now.getDate()<10)?'0'+(now.getDate()+1): (now.getDate()))+"/"+((now.getMonth()<10)?'0'+(now.getMonth()+1): (now.getMonth()+1))+"/"+now.getFullYear()+" ás "+now.getHours()+":"+now.getMinutes() ;
       this.ApiCepProvider.getCep(cep).then(
         data =>
         {
